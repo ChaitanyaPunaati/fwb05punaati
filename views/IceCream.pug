@@ -2,15 +2,31 @@ extends layout
 
 block content
   h1= title
-  div(class="container")
-  p This is webapps Assignment 10
-  <button type="button" class="btn btn-secondary btn-lg" onclick="Adding()">Press Me</button>
-  div(id="target") Display
+  -
 
-
-  script. 
-      var client_count=0 
-      function Adding(){
-        client_count++;
-        document.getElementById("target").innerHTML=`Value now ${client_count}`
-      }
+    const IceCream = [
+      {
+      'IceCreamName': "Choclate",
+      'Price': "$5",
+      'Quantity': "1"
+      },
+      {
+      'IceCreamName': "Butterscotch",
+      'Price': "$4"
+      'Quantity': "1"
+      },
+      {
+      'IceCreamName': "vanilla",
+      'Price': "$3"
+      'Quantity': "1"
+      },
+      ]
+  div(class="container-fluid")
+  div(class="row")
+    each elephant,index in elephants
+      div(class="col-sm-2 " onclick=`buy(${index})`) #{elephant.Name} - #{elephant.Cost} - #{elephant.Weight} 
+  script.
+      function buy(itemNo)
+      {
+        alert(`You purchased Item ${itemNo+1}`)
+      }     
